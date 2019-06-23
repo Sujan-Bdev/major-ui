@@ -15,10 +15,12 @@ const NavBar = () => {
                     <IconButton edge="start"  color="inherit" aria-label="Menu">
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" >
-                        News
+                    <Typography variant="title" >
+                        MAJOR PROJECT
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit">Home</Button>
+                    <Button color="inherit">About</Button>
+                    <Button color="inherit">Demo</Button>
                 </Toolbar>
             </AppBar>
         </div>
