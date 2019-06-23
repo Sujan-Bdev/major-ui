@@ -1,0 +1,13 @@
+.imageStyle {
+    height: 590px;
+    width: 590px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+.paperStyle {
+    height: 600px;
+    width: 600px;
+    margin: 20px auto auto;
+    align-self: center;
+    background-color: transparent
+}
