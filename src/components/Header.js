@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import bkg from "../assets/images/landing.png";
+import bkg from "../assets/images/village-1784455_1920.jpg";
 import Demo from "./demo";
 import NavBar from "./NavBar";
 
@@ -13,6 +13,7 @@ const Cover = styled.div`
   background-size: cover;
   background-position: left 10% bottom 20%;
   background-repeat: no-repeat;
+  height: 100vp;
   width: 100%;
   padding: 10px;
   position: relative;
