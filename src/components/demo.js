@@ -1,33 +1,125 @@
-import React from 'react';
-import {makeStyles} from "@material-ui/styles";
+import React, { useEffect } from "react";
+import { useSpring, animated } from "react-spring";
+import styled from "styled-components";
 
-const useStyles = makeStyles({
-    root: {
-        display: "flex",
-        flexDirection: "flex-start",
-        justifyContent: " flex-end",
-        width: 'auto',
-        height: 'auto',
-        border: '2px solid black',
+const Title = styled(animated.h1)`
+  color: rgba(0, 0, 0, 1);
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 50px;
+  font-weight: bolder;
+`;
 
-    },
-    child: {
-        border: '2px solid black',
-        width: 50,
-        height: 50,
-        padding: 10,
-        margin: 10
+const SubTitle = styled(animated.h2)`
+  color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 100px;
+`;
 
-    }
-});
+const Button = styled(animated.a)`
+  background: linear-gradient(to bottom right, red, yellow);
+  color: rgba(0, 0, 0, 1);
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  display: inline-block;
+
+  ::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 40px;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: linear-gradient(to bottom right, red, yellow);
+    transition: all 0.3s;
+  }
+
+  :hover::after {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+`;
 
 const Demo = () => {
-    const classes = useStyles();
+    const [propsButton, setButton] = useSpring(() => ({
+        transform: "translateY(60px)",
+        boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)",
+        opacity: 0,
+        config: {
+            tension: 100,
+            friction: 20
+        }
+    }));
+    useEffect(() => {
+        setButton({
+            transform: "translateY(0px)",
+            boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)",
+            opacity: 1
+        });
+    }, []);
+    const slideRight = useSpring({
+        config: {
+            tension: 35,
+            friction: 8
+        },
+        transform: "translateX(0px)",
+        opacity: 1,
+        from: {
+            transform: "translateX(-300px)",
+            opacity: 0
+        }
+    });
+    const slideLeft = useSpring({
+        config: {
+            tension: 35,
+            friction: 8
+        },
+        transform: "translateX(0px)",
+        opacity: 1,
+        from: {
+            transform: "translateX(300px)",
+            opacity: 0
+        }
+    });
     return (
-        <div className={classes.root}>
-            <button className={classes.child}>hi</button>
-            <button className={classes.child}>Sujan</button>
-        </div>
+        <>
+            <Title style={slideRight}>Building Footprint Extraction</Title>
+            <SubTitle style={slideLeft}>Using Satellite Imagery</SubTitle>
+            <div style={{ textAlign: "center" }}>
+                <Button
+                    style={propsButton}
+                    onMouseEnter={() =>
+                        setButton({
+                            transform: "translateY(-3px)",
+                            boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.3)"
+                        })
+                    }
+                    onMouseLeave={() =>
+                        setButton({
+                            transform: "translateY(0px)",
+                            boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)"
+                        })
+                    }
+                    onClick={() => {
+                        setButton({
+                            transform: "translateY(-1px)",
+                            boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)"
+                        });
+                    }}
+                    href={"#"}
+                >
+                    Demo
+                </Button>
+            </div>
+        </>
     );
 };
 
