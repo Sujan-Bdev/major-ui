@@ -29,7 +29,7 @@ const Button = styled(animated.a)`
   font-family: "Roboto", sans-serif;
   text-decoration: none;
   display: inline-block;
-
+  
   ::after {
     content: "";
     height: 100%;
@@ -95,7 +95,7 @@ const Demo = () => {
       <Title style={slideRight}>Building Footprint Extraction</Title>
       <SubTitle style={slideLeft}>Using Satellite Imagery</SubTitle>
       <div style={{ textAlign: "center" }}>
-        <Button
+        <Button href={"#Demo"}
           style={propsButton}
           onMouseEnter={() =>
             setButton({
@@ -115,7 +115,6 @@ const Demo = () => {
               boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)"
             });
           }}
-          href={"#"}
         >
           Demo
         </Button>
