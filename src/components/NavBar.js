@@ -15,7 +15,7 @@ const Nav = styled.nav`
   position: fixed;
 `;
 
-const NavItem = styled.a`
+const NavItem = styled.li`
   list-style-type: none;
   text-decoration: none;
   color: #fff;
@@ -27,7 +27,7 @@ const NavItem = styled.a`
 `;
 
 const NavBar = () => {
-  const items = navItems.map(item => <NavItem href={`#${item}`}>{item}</NavItem>);
+  const items = navItems.map(item => <NavItem>{item}</NavItem>);
   return (
     <div>
       <Nav>{items}</Nav>

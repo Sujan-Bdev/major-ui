@@ -46,7 +46,6 @@ export default function App() {
 
     return (
         <div>
-            
             <Typography variant={"h4"} style={{textAlign: "center"}}>Building Footprint Extraction</Typography>
             <Paper elevation={12} className={"paperStyle"} style={{}}>
                 {!state.load ? <img src={state.address} alt={""}
