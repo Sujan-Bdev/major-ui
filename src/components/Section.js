@@ -8,10 +8,10 @@ const Sect = styled.section`
   background-size: cover;
 `;
 
-const Section = (props) => {
+const Section = ({color, reference}) => {
   return (
     <div>
-      <Sect color = {props.color} />
+      <Sect id={reference} color = {color} />
     </div>
   );
 };

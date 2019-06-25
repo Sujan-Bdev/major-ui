@@ -6,8 +6,9 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Section color = {"#8defb9"}/>
-      <Section color = {"#d86efa"}/>
+      <Section/>
+      <Section reference={"About"} color = {"#8defb9"}/>
+      <Section reference={"Demo"} color = {"#fff"}/>
     </div>
   );
 };
