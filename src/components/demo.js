@@ -15,11 +15,13 @@ const Title = styled(animated.h1)`
 
 const SubTitle = styled(animated.h2)`
   color: rgb( 237, 240, 146 );
+  width: 80%;
+  margin-left: auto;
   text-align: center;
   font-family: "Varela Round", sans-serif;
   font-size: 40px;
   font-weight: bold;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
 `;
 
 const Button = styled(animated.a)`
@@ -68,11 +70,18 @@ const Demo = () => {
       opacity: 1
     });
     lottie.loadAnimation({
-      container: document.getElementById("animation"),
+      container: document.getElementById("title"),
       renderer: 'svg',
       loop: false,
       autoplay: true,
       path:"/data.json"
+    })
+    lottie.loadAnimation({
+      container: document.getElementById("subtitle"),
+      renderer: 'svg',
+      loop: false,
+      autoplay: true,
+      path:"/data1.json"
     })
   }, []);
   const slideRight = useSpring({
@@ -101,8 +110,8 @@ const Demo = () => {
   });
   return (
     <>
-      <Title id="animation" style={slideRight}></Title>
-      <SubTitle style={slideLeft}>Using Satellite Imagery</SubTitle>
+      <Title id="title" style={slideRight}></Title>
+      <SubTitle id='subtitle' style={slideLeft}></SubTitle>
       <div style={{ textAlign: "center" }}>
         <Button
           style={propsButton}

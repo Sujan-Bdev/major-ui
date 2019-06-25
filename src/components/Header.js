@@ -7,7 +7,7 @@ import NavBar from "./NavBar";
 const Cover = styled.div`
   height: 100vh;
   width: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
     url(${bkg});
   background-size: cover;
   background-position: left 10% bottom 20%;
