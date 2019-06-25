@@ -4,13 +4,13 @@ import SaveIcon from '@material-ui/icons/Save';
 import UploadIcon from '@material-ui/icons/CloudUpload'
 import "../App.css";
 import {initialState, reducer} from '../reducer';
+import lottie from 'lottie-web';
 
 export default function App() {
     const inputRef = useRef(null);
     const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
-        console.log(1);
     });
     const handleProcess = () => {
         let connection = new WebSocket('ws://localhost:8765');

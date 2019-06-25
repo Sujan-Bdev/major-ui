@@ -69,20 +69,33 @@ const Demo = () => {
       boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)",
       opacity: 1
     });
-    lottie.loadAnimation({
+    let titleAnimation = lottie.loadAnimation({
       container: document.getElementById("title"),
       renderer: 'svg',
       loop: false,
       autoplay: true,
       path:"/data.json"
-    })
-    lottie.loadAnimation({
+    });
+    let subTitle = lottie.loadAnimation({
       container: document.getElementById("subtitle"),
       renderer: 'svg',
       loop: false,
       autoplay: true,
       path:"/data1.json"
-    })
+    });
+    let downAnimation = lottie.loadAnimation({
+      container: document.getElementById("down"),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path:"/down.json"
+    });
+    downAnimation.setSpeed(0.8);
+    return () => {
+      titleAnimation.destroy();
+      subTitle.destroy();
+      downAnimation.destroy();
+    }
   }, []);
   const slideRight = useSpring({
     config: {
@@ -110,8 +123,8 @@ const Demo = () => {
   });
   return (
     <>
-      <Title id="title" style={slideRight}></Title>
-      <SubTitle id='subtitle' style={slideLeft}></SubTitle>
+      <Title id="title" style={slideRight}/>
+      <SubTitle id='subtitle' style={slideLeft}/>
       <div style={{ textAlign: "center" }}>
         <Button
           style={propsButton}
@@ -137,6 +150,7 @@ const Demo = () => {
         >
           Demo
         </Button>
+        <div style={{height: 80}} id="down"/>
       </div>
     </>
   );
