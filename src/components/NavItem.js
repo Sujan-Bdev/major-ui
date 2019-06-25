@@ -12,7 +12,7 @@ const Item = styled(animated.a)`
 
 export default function({children, href}) {
   const [propsColor, setColor] = useSpring(() => ({
-    color: 'white'
+    color: 'black'
   }));
   useEffect(() => {
       window.addEventListener('scroll', handleScroll);
@@ -22,12 +22,12 @@ export default function({children, href}) {
   const handleScroll = () => {
     if (window.scrollY > 650) {
       setColor({
-        color: 'black'
+        color: 'white'
       });
     }
     else {
       setColor({
-        color: 'white'
+        color: 'black'
       });
     }
   }

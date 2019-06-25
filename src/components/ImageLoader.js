@@ -2,8 +2,8 @@ import React, {useEffect, useRef, useReducer} from "react";
 import {Button, Paper, CircularProgress, Typography, Dialog, DialogTitle} from "@material-ui/core";
 import SaveIcon from '@material-ui/icons/Save';
 import UploadIcon from '@material-ui/icons/CloudUpload'
-import "./App.css";
-import {initialState, reducer} from './reducer';
+import "../App.css";
+import {initialState, reducer} from '../reducer';
 
 export default function App() {
     const inputRef = useRef(null);
@@ -46,7 +46,7 @@ export default function App() {
 
     return (
         <div>
-            <Typography variant={"h4"} style={{textAlign: "center"}}>Building Footprint Extraction</Typography>
+            <Typography variant={"h4"} style={{textAlign: "center"}}>Try It!</Typography>
             <Paper elevation={12} className={"paperStyle"} style={{}}>
                 {!state.load ? <img src={state.address} alt={""}
                                     style={state.processing ? {filter: 'blur(10px)'} : {filter: 'blur(0px)'}}

@@ -6,12 +6,16 @@ const Sect = styled.section`
   height: 100vh;
   background: ${props => props.color};
   background-size: cover;
+  color: #000;
+  padding-top: 20px;
 `;
 
-const Section = ({color, reference}) => {
+const Section = ({ color, reference, children }) => {
   return (
     <div>
-      <Sect id={reference} color = {color} />
+      <Sect id={reference} color={color} >
+        {children}
+      </Sect>
     </div>
   );
 };
