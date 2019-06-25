@@ -1,12 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useSpring, animated } from 'react-spring';
+import NavItem from './NavItem';
 
 const navItems = ["Home", "About", "Demo"];
 
-const Nav = styled.nav`
-  border-top: 0.2px solid ${props => props.primary?'rgb(246, 246, 239)':'rgb(0, 0, 0)'};
-  border-bottom: 0.2px solid ${props => props.primary?'rgb(246, 246, 239)':'rgb(0, 0, 0)'};
+const Nav = styled(animated.nav)`
   width: 100%;
+  border-top: 0.2px solid;
+  border-bottom: 0.2px solid;
+  border-color: white;
   height: 50px;
   display: flex;
   flex-direction: row;
@@ -15,36 +18,32 @@ const Nav = styled.nav`
   position: fixed;
 `;
 
-const NavItem = styled.a`
-  list-style-type: none;
-  text-decoration: none;
-color: ${props => props.primary? 'white':'black'};
-  padding: 30px;
-
-  :hover {
-    color: orange;
-  }
-`;
-
 const NavBar = () => {
-  const [primary, setPrimary] = useState(true);
+  const [propsColor, setColor] = useSpring(() => ({
+    borderColor: 'white'
+  }));
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   });
 
   const handleScroll = () => {
-    if(window.scrollY>450) {
-      setPrimary(false)
+    if (window.scrollY > 650) {
+      setColor({
+        borderColor: 'black'
+      });
     }
     else {
-      setPrimary(true);
+      setColor({
+        borderColor: 'white'
+      });
     }
   }
-  const items = navItems.map(item => <NavItem primary={primary} key={item} href={`#${item}`}>{item}</NavItem>);
+  const items = navItems.map(item => <NavItem key={item} href={`#${item}`}>{item}</NavItem>);
   return (
     <div>
-      <Nav primary={primary}>{items}</Nav>
+      <Nav style={propsColor}>{items}</Nav>
     </div>
   );
 };

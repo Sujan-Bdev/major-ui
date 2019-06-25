@@ -26,7 +26,6 @@ const Header = () => {
       <Cover>
           <NavBar/>
           <Demo/>
-          <h2>{window.scrollY}</h2>
       </Cover>
     </div>
   );
