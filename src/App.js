@@ -1,14 +1,13 @@
-import React, {useEffect} from "react";
-import Demo from "./components/demo";
-import NavBar from "./components/NavBar";
-import About from "./components/About";
+import React from "react";
 import Header from "./components/Header";
+import Section from "./components/Section";
 
 const App = () => {
   return (
     <div>
       <Header />
-      <About />
+      <Section color = {"#8defb9"}/>
+      <Section color = {"#d86efa"}/>
     </div>
   );
 };
