@@ -20,6 +20,7 @@ const Nav = styled(animated.nav)`
   align-items: center;
   position: fixed;
   background: ${props => (props.primary ? "none" : "white")};
+  z-index: 2;
 `;
 
 const NavBar = () => {
@@ -55,3 +56,12 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
+/*
+
+  border-top: 0.2px solid
+    ${props => (props.primary ? "rgb(246, 246, 239)" : "rgb(0, 0, 0)")};
+  border-bottom: 0.2px solid
+    ${props => (props.primary ? "rgb(246, 246, 239)" : "rgb(0, 0, 0)")};
+ */
