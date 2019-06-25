@@ -8,7 +8,6 @@ const Title = styled(animated.h1)`
   font-family: "Roboto", sans-serif;
   text-transform: capitalize;
   font-size: 3.84em;
-  margin-top: 220px;
 `;
 
 const SubTitle = styled(animated.h2)`

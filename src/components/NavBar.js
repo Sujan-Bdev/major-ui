@@ -5,22 +5,20 @@ import NavItem from './NavItem';
 
 const navItems = ["Home", "About", "Demo"];
 
-
 const Nav = styled(animated.nav)`
   width: 100%;
   border-top: 0.2px solid;
   border-bottom: 0.2px solid;
   border-color: white;
-  height: 50px;
   height: 80px;
   box-sizing:border-box;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  background: ${props => (props.primary ? "none" : "white")};
-  z-index: 2;
+  
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 0;
 `;
 
 const NavBar = () => {

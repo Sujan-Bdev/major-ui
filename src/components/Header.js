@@ -12,8 +12,6 @@ const Cover = styled.div`
   background-size: cover;
   background-position: left 10% bottom 20%;
   background-repeat: no-repeat;
-  height: 100vp;
-  padding: 10px;
   position: relative;
 `;
 
