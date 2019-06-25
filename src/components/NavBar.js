@@ -5,17 +5,21 @@ import NavItem from './NavItem';
 
 const navItems = ["Home", "About", "Demo"];
 
+
 const Nav = styled(animated.nav)`
   width: 100%;
   border-top: 0.2px solid;
   border-bottom: 0.2px solid;
   border-color: white;
   height: 50px;
+  height: 80px;
+  box-sizing:border-box;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   position: fixed;
+  background: ${props => (props.primary ? "none" : "white")};
 `;
 
 const NavBar = () => {
@@ -24,11 +28,12 @@ const NavBar = () => {
   }));
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   });
 
   const handleScroll = () => {
+
     if (window.scrollY > 650) {
       setColor({
         borderColor: 'black'
@@ -41,6 +46,7 @@ const NavBar = () => {
     }
   }
   const items = navItems.map(item => <NavItem key={item} href={`#${item}`}>{item}</NavItem>);
+
   return (
     <div id={"Home"}>
       <Nav style={propsColor}>{items}</Nav>

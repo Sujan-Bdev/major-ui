@@ -7,14 +7,12 @@ import NavBar from "./NavBar";
 const Cover = styled.div`
   height: 100vh;
   width: 100%;
-  padding: 10px;
-  background:linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ),
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(${bkg});
   background-size: cover;
   background-position: left 10% bottom 20%;
   background-repeat: no-repeat;
   height: 100vp;
-  width: 100%;
   padding: 10px;
   position: relative;
 `;
@@ -22,7 +20,6 @@ const Cover = styled.div`
 const Header = () => {
   return (
     <div>
-
       <Cover>
           <NavBar/>
           <Demo/>
