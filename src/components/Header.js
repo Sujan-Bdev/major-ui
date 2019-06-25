@@ -21,8 +21,8 @@ const Header = () => {
   return (
     <div>
       <Cover>
-        <NavBar />
-        <Demo />
+          <NavBar/>
+          <Demo/>
       </Cover>
     </div>
   );
