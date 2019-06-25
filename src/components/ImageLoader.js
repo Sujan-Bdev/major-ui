@@ -19,13 +19,14 @@ export default function App() {
             autoplay: false,
             path:"/try.json"
           });
+          tryAnimation.setSpeed(0.8);
           return () => {
               tryAnimation.destroy();
               window.removeEventListener('scroll', handleScroll);
           }
     });
     const handleScroll = () => {
-        if(window.scrollY> 700) {
+        if(window.scrollY> 1300) {
             tryAnimation.play();
         }
     }

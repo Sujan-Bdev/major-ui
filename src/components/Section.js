@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Sect = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 1000px;
   background: ${props => props.color};
   background-size: cover;
   color: #000;
