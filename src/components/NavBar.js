@@ -10,7 +10,6 @@ const Nav = styled(animated.nav)`
   top:0;
   left:0;
   width: 100%;
-  background-color: rgba(255, 255, 255);
   border-top: 0.2px solid;
   border-bottom: 0.2px solid;
   border-color: white;
@@ -20,13 +19,14 @@ const Nav = styled(animated.nav)`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
   z-index: 1;
 `;
 
 const NavBar = () => {
   const [propsColor, setColor] = useSpring(() => ({
     borderColor: 'white',
-    backgroundColor: 'white'
+    backgroundColor: 'rgba(255, 255, 255, 0.99)'
   }));
 
   useEffect(() => {
@@ -38,13 +38,13 @@ const NavBar = () => {
     if (window.scrollY > 650) {
       setColor({
         borderColor: 'black',
-        backgroundColor: 'black'
+        backgroundColor: 'rgba(0, 0, 0, 0.99)'
       });
     }
     else {
       setColor({
         borderColor: 'white',
-        backgroundColor: 'white'
+        backgroundColor: 'rgba(255, 255, 255, 0.99)'
       });
     }
   }
