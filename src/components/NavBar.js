@@ -6,7 +6,11 @@ import NavItem from './NavItem';
 const navItems = ["Home", "About", "Demo"];
 
 const Nav = styled(animated.nav)`
+  position: fixed;
+  top:0;
+  left:0;
   width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
   border-top: 0.2px solid;
   border-bottom: 0.2px solid;
   border-color: white;
@@ -16,14 +20,11 @@ const Nav = styled(animated.nav)`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  
-  background: rgba(255, 255, 255, 0.2);
-  z-index: 0;
 `;
 
 const NavBar = () => {
   const [propsColor, setColor] = useSpring(() => ({
-    borderColor: 'white'
+    borderColor: 'white',
   }));
 
   useEffect(() => {
@@ -32,7 +33,6 @@ const NavBar = () => {
   });
 
   const handleScroll = () => {
-
     if (window.scrollY > 650) {
       setColor({
         borderColor: 'black'
