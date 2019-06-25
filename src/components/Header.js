@@ -5,7 +5,7 @@ import Demo from "./demo";
 import NavBar from "./NavBar";
 
 const Cover = styled.div`
-  height: 100vh;
+  height: 1000px;
   width: 100%;
   background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6)),
     url(${bkg});
