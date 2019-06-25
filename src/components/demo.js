@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
+import lottie from 'lottie-web';
 
 const Title = styled(animated.h1)`
   color: white;
@@ -8,7 +9,8 @@ const Title = styled(animated.h1)`
   font-family: "Roboto", sans-serif;
   text-transform: capitalize;
   font-size: 3.84em;
-  margin-top: 250px;
+  margin-top: 100px;
+  background-color: transparent;
 `;
 
 const SubTitle = styled(animated.h2)`
@@ -65,6 +67,13 @@ const Demo = () => {
       boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)",
       opacity: 1
     });
+    lottie.loadAnimation({
+      container: document.getElementById("animation"),
+      renderer: 'svg',
+      loop: false,
+      autoplay: true,
+      path:"/data.json"
+    })
   }, []);
   const slideRight = useSpring({
     config: {
@@ -92,7 +101,7 @@ const Demo = () => {
   });
   return (
     <>
-      <Title style={slideRight}>Building Footprint Extraction</Title>
+      <Title id="animation" style={slideRight}></Title>
       <SubTitle style={slideLeft}>Using Satellite Imagery</SubTitle>
       <div style={{ textAlign: "center" }}>
         <Button
