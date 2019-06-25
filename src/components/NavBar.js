@@ -42,7 +42,7 @@ const NavBar = () => {
   }
   const items = navItems.map(item => <NavItem key={item} href={`#${item}`}>{item}</NavItem>);
   return (
-    <div>
+    <div id={"Home"}>
       <Nav style={propsColor}>{items}</Nav>
     </div>
   );

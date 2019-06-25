@@ -10,7 +10,7 @@ const Item = styled(animated.a)`
   color: white;
 `;
 
-export default function({children}) {
+export default function({children, href}) {
   const [propsColor, setColor] = useSpring(() => ({
     color: 'white'
   }));
@@ -38,6 +38,6 @@ export default function({children}) {
   }
 
   return (
-    <Item style={propsColor} onMouseLeave={handleScroll} onMouseEnter={handleMouseEnter}>{children}</Item>
+    <Item href={href} style={propsColor} onMouseLeave={handleScroll} onMouseEnter={handleMouseEnter}>{children}</Item>
   );
 }
