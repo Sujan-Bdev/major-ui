@@ -9,9 +9,26 @@ import lottie from 'lottie-web';
 export default function App() {
     const inputRef = useRef(null);
     const [state, dispatch] = useReducer(reducer, initialState);
-
+    let tryAnimation;
     useEffect(() => {
+        window.addEventListener('scroll', handleScroll)
+        tryAnimation = lottie.loadAnimation({
+            container: document.getElementById("try"),
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            path:"/try.json"
+          });
+          return () => {
+              tryAnimation.destroy();
+              window.removeEventListener('scroll', handleScroll);
+          }
     });
+    const handleScroll = () => {
+        if(window.scrollY> 700) {
+            tryAnimation.play();
+        }
+    }
     const handleProcess = () => {
         let connection = new WebSocket('ws://localhost:8765');
         connection.onopen = function () {
@@ -46,7 +63,8 @@ export default function App() {
 
     return (
         <div>
-            <Typography variant={"h4"} style={{textAlign: "center"}}>Try It!</Typography>
+            <div style={{height: 70}}/>
+            <div id="try" style={{textAlign: "center"}}/>
             <Paper elevation={12} className={"paperStyle"} style={{}}>
                 {!state.load ? <img src={state.address} alt={""}
                                     style={state.processing ? {filter: 'blur(10px)'} : {filter: 'blur(0px)'}}

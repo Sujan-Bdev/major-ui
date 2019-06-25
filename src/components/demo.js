@@ -25,8 +25,8 @@ const SubTitle = styled(animated.h2)`
 `;
 
 const Button = styled(animated.a)`
-  background: linear-gradient(to bottom right, red, yellow);
-  color: rgba(0, 0, 0, 1);
+  background: linear-gradient(to bottom right, blue, cyan);
+  color: rgba(0, 0, 0, 0.8);
   border-radius: 30px;
   padding: 10px 30px;
   font-size: 20px;
@@ -43,7 +43,7 @@ const Button = styled(animated.a)`
     top: 0;
     left: 0;
     z-index: -1;
-    background: linear-gradient(to bottom right, red, yellow);
+    background: linear-gradient(to bottom right, cyan, blue);
     transition: all 0.3s;
   }
 
