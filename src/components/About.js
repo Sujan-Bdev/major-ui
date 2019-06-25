@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import lottie from 'lottie-web';
 
 const About = () => {
@@ -9,22 +9,22 @@ const About = () => {
             renderer: 'svg',
             loop: false,
             autoplay: false,
-            path:"/what.json"
-          });
-          window.addEventListener('scroll', handleScroll)
-          return () => {
-              window.removeEventListener('scroll', handleScroll)
-              whatAnimation.destroy();
-          }
+            path: "/what.json"
+        });
+        window.addEventListener('scroll', handleScroll)
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+            whatAnimation.destroy();
+        }
     })
     const handleScroll = () => {
-        if(window.scrollY> 400) {
+        if (window.scrollY > 400) {
             whatAnimation.play();
         }
     }
     return (
-        <div id = "what">
-
+        <div>
+            <div id="what" />
         </div>
     );
 };
