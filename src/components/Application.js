@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import application from "../assets/images/application.jpg";
-import Fab from '@material-ui/core/Fab';
-import Close from '@material-ui/icons/Close'
+import { Box } from "@material-ui/core";
+import BuildingCount from "./BuildingCount";
 
 const Wrapper1 = styled.div`
   width: 100%;
@@ -69,7 +69,7 @@ const CardText = styled.h1`
 
 const CalculateButton = styled.button`
   /* Adapt the colors based on primary prop */
-  
+
   color: #f7be16;
   font-size: 3em;
   margin: 1em;
@@ -80,29 +80,23 @@ const CalculateButton = styled.button`
   height: 50px;
   background: #00818a;
   text-transform: uppercase;
-  
-  &:hover{
+
+  &:hover {
     background: #f7be16;
     color: #00818a;
-    border: #00818a ;
+    border: #00818a;
   }
-  
 `;
 
-const Application = ({dispatch, appImageAdd, disabled, showBuildingCount, showSolarPotential}) => {
-  const [hover, setHover] = useState("false");
-  const handleBuildingCount = () => {
-    dispatch({type: 'buildingCount'})
+const Application = () => {
+  const [hover, setHover] = useState(false);
+
+  const [openBox, setBox] = useState(false);
+  const handleClick = () => {
+    console.log("I am clicked");
+    setBox(true);
   };
-  const handleSolarPotential = () => {
-    dispatch({type: 'solarPotential'})
-  };
-  const handleSolarClose = () => {
-    dispatch({type: 'closeSolar'})
-  };
-  const handleBuildingClose = () => {
-    dispatch({type: 'closeBuilding'})
-  };
+
   return (
     <div>
       <Wrapper1>
@@ -116,7 +110,7 @@ const Application = ({dispatch, appImageAdd, disabled, showBuildingCount, showSo
         </ApplicationImgText>
       </Wrapper1>
       <Wrapper2>
-        {!showBuildingCount?<Cards
+        <Cards
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >
@@ -133,14 +127,9 @@ const Application = ({dispatch, appImageAdd, disabled, showBuildingCount, showSo
             be done automatically.{" "}
           </h2>
 
-          <CalculateButton variant={"contained"} color={"primary"} disabled={disabled} onClick={handleBuildingCount}>Calculate</CalculateButton>
-        </Cards>:<Cards>
-          <img src={appImageAdd} style={{height: '75vh', width: '100%'}} alt={""}/>
-          <Fab color={"primary"} onClick={handleBuildingClose} style={{position:"absolute", borderRadius: 0}}>
-            <Close fontSize={"large"}/>
-          </Fab>
-        </Cards>}
-        {!showSolarPotential?<Cards
+          <CalculateButton onClick={handleClick}>Calculate</CalculateButton>
+        </Cards>
+        <Cards
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >
@@ -153,16 +142,13 @@ const Application = ({dispatch, appImageAdd, disabled, showBuildingCount, showSo
             We can evaluate how much solar energy can be generate from the area
             of the rooftop. Based on the region and solar data assumptions we
             can approximate the possible solar energy generation.
-          </h2><br/>
-          <CalculateButton disabled={disabled} onClick={handleSolarPotential}>Calculate</CalculateButton>
-        </Cards>:<Cards>
-          <img src={appImageAdd} style={{height: '75vh', width: '100%'}} alt={""}/>
-          <Fab color={"primary"} onClick={handleSolarClose} style={{position:"absolute", borderRadius: 0}}>
-            <Close fontSize={"large"}/>
-          </Fab>
+          </h2>
+          <br />
 
-        </Cards>}
+          <CalculateButton>Calculate</CalculateButton>
+        </Cards>
       </Wrapper2>
+      {openBox ? <BuildingCount /> : null}
     </div>
   );
 };
