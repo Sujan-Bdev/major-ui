@@ -1,21 +1,16 @@
 
-import React, {useEffect, useRef, useReducer} from "react";
+import React, {useRef, useReducer} from "react";
 import {Button, Paper, CircularProgress, Typography, Dialog, DialogTitle} from "@material-ui/core";
-import SaveIcon from '@material-ui/icons/Save';
 import UploadIcon from '@material-ui/icons/CloudUpload'
 import "../App.css";
 import {initialState, reducer} from '../reducer';
-import lottie from 'lottie-web';
+import Application from "./Application";
+import Section from "./Section";
 
 export default function App() {
   const inputRef = useRef(null);
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const handleScroll = () => {
-    if(window.scrollY> 1300) {
-
-    }
-  }
   const handleProcess = () => {
     let connection = new WebSocket('ws://localhost:8765');
     connection.onopen = function () {
@@ -41,9 +36,6 @@ export default function App() {
     };
   };
 
-  const handleDownload = () => {
-
-  };
   // if (!load) {
   //     paperStyle.backgroundColor = 'red';
   // }
@@ -74,7 +66,7 @@ export default function App() {
           Upload
         </Button>
 
-        {!state.downloadButton ?
+        {!state.downloadButton &&
             <Button
                 disabled={state.disableSegment}
                 onClick={handleProcess}
@@ -83,13 +75,6 @@ export default function App() {
                 style={{marginLeft: '20vw'}}
             >
               Segment
-            </Button> :
-            <Button onClick={handleDownload}
-                    variant={"contained"}
-                    color={"secondary"}
-                    style={{marginLeft: '20vw'}}>
-              <SaveIcon style={{marginRight: 5}}/>
-              Download
             </Button>}
         <input
             ref={inputRef}
@@ -98,6 +83,9 @@ export default function App() {
             accept="image/png, image/jpeg, image/gif"
             style={{display: "none"}}
         />
+        <Section marginTop={"20px"} size = { 100 + 'vh'}>
+          <Application dispatch={dispatch} showBuildingCount={state.showBuildingCount} appImageAdd = {state.appImageAdd} showSolarPotential = {state.showSolarPotential} disabled={!state.downloadButton}/>
+        </Section>
       </div>
   );
 }

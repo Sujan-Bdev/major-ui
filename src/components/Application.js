@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import application from "../assets/images/application.jpg";
+import Fab from '@material-ui/core/Fab';
+import Close from '@material-ui/icons/Close'
 
 const Wrapper1 = styled.div`
   width: 100%;
@@ -87,8 +89,20 @@ const CalculateButton = styled.button`
   
 `;
 
-const Application = () => {
+const Application = ({dispatch, appImageAdd, disabled, showBuildingCount, showSolarPotential}) => {
   const [hover, setHover] = useState("false");
+  const handleBuildingCount = () => {
+    dispatch({type: 'buildingCount'})
+  };
+  const handleSolarPotential = () => {
+    dispatch({type: 'solarPotential'})
+  };
+  const handleSolarClose = () => {
+    dispatch({type: 'closeSolar'})
+  };
+  const handleBuildingClose = () => {
+    dispatch({type: 'closeBuilding'})
+  };
   return (
     <div>
       <Wrapper1>
@@ -102,7 +116,7 @@ const Application = () => {
         </ApplicationImgText>
       </Wrapper1>
       <Wrapper2>
-        <Cards
+        {!showBuildingCount?<Cards
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >
@@ -119,9 +133,14 @@ const Application = () => {
             be done automatically.{" "}
           </h2>
 
-          <CalculateButton>Calculate</CalculateButton>
-        </Cards>
-        <Cards
+          <CalculateButton variant={"contained"} color={"primary"} disabled={disabled} onClick={handleBuildingCount}>Calculate</CalculateButton>
+        </Cards>:<Cards>
+          <img src={appImageAdd} style={{height: '75vh', width: '100%'}} alt={""}/>
+          <Fab color={"primary"} onClick={handleBuildingClose} style={{position:"absolute", borderRadius: 0}}>
+            <Close fontSize={"large"}/>
+          </Fab>
+        </Cards>}
+        {!showSolarPotential?<Cards
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
         >
@@ -135,9 +154,14 @@ const Application = () => {
             of the rooftop. Based on the region and solar data assumptions we
             can approximate the possible solar energy generation.
           </h2><br/>
+          <CalculateButton disabled={disabled} onClick={handleSolarPotential}>Calculate</CalculateButton>
+        </Cards>:<Cards>
+          <img src={appImageAdd} style={{height: '75vh', width: '100%'}} alt={""}/>
+          <Fab color={"primary"} onClick={handleSolarClose} style={{position:"absolute", borderRadius: 0}}>
+            <Close fontSize={"large"}/>
+          </Fab>
 
-          <CalculateButton>Calculate</CalculateButton>
-        </Cards>
+        </Cards>}
       </Wrapper2>
     </div>
   );

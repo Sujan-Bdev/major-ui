@@ -4,7 +4,12 @@ export const initialState = {
     processing: false,
     disableSegment: true,
     downloadButton: false,
-    error: false
+    error: false,
+    showBuildingCount: false,
+    showSolarPotential: false,
+    appImageAdd: null,
+    buildings: 0,
+    area: 0,
 };
 
 export function reducer(state, action) {
@@ -40,6 +45,28 @@ export function reducer(state, action) {
             return {
                 ...state,
                 error: false
+            };
+        case 'buildingCount':
+            return {
+                ...state,
+                showBuildingCount: true,
+                appImageAdd: state.address,
+            };
+        case 'solarPotential':
+            return {
+                ...state,
+                showSolarPotential: true,
+                appImageAdd: state.address,
+            };
+        case 'closeSolar':
+            return {
+                ...state,
+                showSolarPotential: false
+            };
+        case 'closeBuilding':
+            return {
+                ...state,
+                showBuildingCount: false
             };
         default:
             return state;
