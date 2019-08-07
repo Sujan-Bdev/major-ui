@@ -48,7 +48,6 @@ const Text = styled.h1`
     font-family: "Roberto", sans-serif;
     font-size: ${props => props.size || 30+'px' };
     text-align: center;
-    text-transform: uppercase;
     
 `;
 

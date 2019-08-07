@@ -9,17 +9,20 @@ import Application from "./components/Application";
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <Section />
-      <Section reference={"About"} color={"#8defb9"} />
-      <Section reference={"Demo"} color={"#fff"}>
-        <ImageLoader />
-      </Section>
-      <Section size = { 100 + 'vh'}>
-          <Application/>
-      </Section>
-    </div>
+      <div>
+          <Header />
+
+          <Section color={"white"} reference={"About"}>
+              <About />
+          </Section>
+
+          <Section reference={"Demo"} color={"#fafafa"}>
+              <ImageLoader />
+          </Section>
+          <Section size = { 100 + 'vh'}>
+              <Application/>
+          </Section>
+      </div>
   );
 };
 
