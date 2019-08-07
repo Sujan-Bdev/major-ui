@@ -1,43 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated } from "react-spring";
 
 const Item = styled(animated.a)`
   list-style-type: none;
   text-decoration: none;
-  font-size: 40px;
-  padding: 30px;
-  color: white;
+  font-family: "Lato", sans-serif;
+  font-size: 2rem;
+  padding: 0 3rem;
 `;
 
-export default function({children, href}) {
+export default function({ children, href }) {
   const [propsColor, setColor] = useSpring(() => ({
-    color: 'black'
+    color: "#ccc"
   }));
   useEffect(() => {
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll)
-  })
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
 
   const handleScroll = () => {
-    if (window.scrollY > 650) {
+    if (window.scrollY > 20) {
       setColor({
-        color: 'white'
+        color: "#ccc"
+      });
+    } else {
+      setColor({
+        color: "white"
       });
     }
-    else {
-      setColor({
-        color: 'black'
-      });
-    }
-  }
+  };
   const handleMouseEnter = () => {
     setColor({
-      color: 'orange'
-    })
-  }
+      color: "orange"
+    });
+  };
 
   return (
-    <Item href={href} style={propsColor} onMouseLeave={handleScroll} onMouseEnter={handleMouseEnter}>{children}</Item>
+    <Item
+      href={href}
+      style={propsColor}
+      onMouseLeave={handleScroll}
+      onMouseEnter={handleMouseEnter}
+    >
+      {children}
+    </Item>
   );
 }

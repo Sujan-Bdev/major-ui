@@ -1,27 +1,31 @@
 import React, { useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
-import lottie from 'lottie-web';
+import lottie from "lottie-web";
 
-const Title = styled(animated.h1)`
-  color: white;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  text-transform: capitalize;
-  font-size: 3.84em;
-  margin-top: 100px;
-  background-color: transparent;
+const Wrapper = styled.div`
+    position:absolute;
+    top: 45%;
+    left: 30%;
+    translate: transition(-50, -50);
+    font-size: 3rem;
+    text-align: center;
 `;
 
-const SubTitle = styled(animated.h2)`
-  color: rgb( 237, 240, 146 );
-  width: 80%;
-  margin-left: auto;
-  text-align: center;
-  font-family: "Varela Round", sans-serif;
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 10px;
+const Title = styled.h1`
+  display: block;
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  font-size: 4rem;
+  font-weight: 400;
+  margin-right: -3.5rem;
+`;
+
+const SubTitle = styled(Title)`
+  font-size: 2rem;
+  font-weight: 700;
+  margin-right: -1.75rem;
 `;
 
 const Button = styled(animated.a)`
@@ -55,7 +59,7 @@ const Button = styled(animated.a)`
 
 const Demo = () => {
   const [propsButton, setButton] = useSpring(() => ({
-    transform: "translateY(60px)",
+
     boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)",
     opacity: 0,
     config: {
@@ -71,32 +75,33 @@ const Demo = () => {
     });
     let titleAnimation = lottie.loadAnimation({
       container: document.getElementById("title"),
-      renderer: 'svg',
+      renderer: "svg",
       loop: false,
       autoplay: true,
-      path:"/data.json"
+      path: "/data.json"
     });
     let subTitle = lottie.loadAnimation({
       container: document.getElementById("subtitle"),
-      renderer: 'svg',
+      renderer: "svg",
       loop: false,
       autoplay: true,
-      path:"/data1.json"
+      path: "/data1.json"
     });
     let downAnimation = lottie.loadAnimation({
       container: document.getElementById("down"),
-      renderer: 'svg',
+      renderer: "svg",
       loop: true,
       autoplay: true,
-      path:"/down.json"
+      path: "/down.json"
     });
     downAnimation.setSpeed(0.8);
     return () => {
       titleAnimation.destroy();
       subTitle.destroy();
       downAnimation.destroy();
-    }
+    };
   }, []);
+
   const slideRight = useSpring({
     config: {
       tension: 35,
@@ -105,7 +110,7 @@ const Demo = () => {
     transform: "translateX(0px)",
     opacity: 1,
     from: {
-      transform: "translateX(-300px)",
+      transform: "translateX(-100px)",
       opacity: 0
     }
   });
@@ -122,9 +127,9 @@ const Demo = () => {
     }
   });
   return (
-    <>
-      <Title id="title" style={slideRight}/>
-      <SubTitle id='subtitle' style={slideLeft}/>
+    <Wrapper>
+      <Title id="title" style={slideRight} />
+      <SubTitle id="subtitle" style={slideLeft} />
       <div style={{ textAlign: "center" }}>
         <Button
           style={propsButton}
@@ -150,9 +155,11 @@ const Demo = () => {
         >
           Demo
         </Button>
-        <div style={{height: 80}} id="down"/>
+        <div style={{ height: 80 }} id="down" />
       </div>
-    </>
+
+    </Wrapper>
+
   );
 };
 

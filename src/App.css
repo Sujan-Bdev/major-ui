@@ -5,9 +5,21 @@
     margin-top: 5px;
 }
 .paperStyle {
-    height: 600px;
+    height: 400px;
     width: 600px;
-    margin: 20px auto auto;
+    margin: 20px auto;
     align-self: center;
     background-color: transparent
+}
+
+.heading{
+    font-size: 6rem;
+    font-weight: 400;
+    text-align: center;
+    padding-bottom: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    word-spacing: 1.5rem;
+    color: #757575;
+    margin-top: -2.2rem;
 }
